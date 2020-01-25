@@ -10,7 +10,7 @@ async function run(): Promise<void> {
     const octokit = new github.GitHub(token);
 
     const repo = await octokit.repos.get({ owner: github.context.repo.owner, repo: github.context.repo.repo });
-    const projects = await octokit.projects.listForRepo({ repo: repo.data.name, owner: repo.data.name });
+    const projects = await octokit.projects.listForRepo({ repo: repo.data.name, owner: github.context.repo.owner});
 
     const projectInfo = projects.data.find(p => p.name == 'Test Project');
 
@@ -39,7 +39,7 @@ async function run(): Promise<void> {
 
     // core.setOutput('time', new Date().toTimeString())
   } catch (error) {
-    core.setFailed(error.message)
+    core.setFailed(error)
   }
 }
 
