@@ -24,8 +24,11 @@ async function run(): Promise<void> {
     console.log('found columns ', columns.data);
     const issue = github.context.issue;
 
+    const is = await octokit.issues.get(issue);
 
-    octokit.projects.createCard({column_id: columns.data.find(c=>c.name == 'Backlog')?.id!, content_id: issue.number, content_type: 'Issue'})
+
+
+    octokit.projects.createCard({column_id: columns.data.find(c=>c.name == 'Backlog')?.id!, content_id: is.data.id, content_type: 'Issue'})
 
     const i = await octokit.issues.get({ issue_number: issue.number, owner: github.context.repo.owner, repo: github.context.repo.repo });
 
