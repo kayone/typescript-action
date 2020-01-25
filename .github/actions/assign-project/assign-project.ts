@@ -25,7 +25,7 @@ async function run(): Promise<void> {
     const issue = github.context.issue;
 
 
-    octokit.projects.createCard({column_id: columns.data.find(c=>c.name == 'Backlog')?.id!, content_id: issue.number})
+    octokit.projects.createCard({column_id: columns.data.find(c=>c.name == 'Backlog')?.id!, content_id: issue.number, content_type: 'Issue'})
 
     const i = await octokit.issues.get({ issue_number: issue.number, owner: github.context.repo.owner, repo: github.context.repo.repo });
 
