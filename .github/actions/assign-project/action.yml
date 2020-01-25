@@ -11,10 +11,7 @@ inputs:
   column:
     description: 'The name of the column to move the issue or pull request to'
     required: true
-inputs:
-  myInput:              # change this
-    description: 'input description here'
-    default: 'default value if applicable'
+
 runs:
   using: 'node12'
   main: './assign-project.js'
