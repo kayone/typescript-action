@@ -13,4 +13,4 @@ jobs:
           fetch-depth: 1
       - run: npm install
       - run: npm run build
-      - uses: ./.github/actions/assign-project.yml
+      - uses: ./.github/actions/assign-project
