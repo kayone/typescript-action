@@ -36,5 +36,7 @@ export async function getProjectColumn(name: string) {
 
 export async function addIssueToColumn(issueNumber: number, columnName: string) {
     const col = await getProjectColumn(columnName);
+    console.log(`Adding ${issueNumber} to ${columnName}`);
+
     return await gh.projects.createCard({ column_id: col.id, content_id: issueNumber, content_type: 'Issue' })
 }
