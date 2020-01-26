@@ -22,7 +22,7 @@ export async function getProject(name: string = core.getInput('project')) {
     return projectInfo;
 }
 
-export async function getProjectColumn(name: string = core.getInput('column')) {
+export async function getProjectColumn(name: string) {
     const project = await getProject();
     const columns = await gh.projects.listColumns({ project_id: project.id });
     const col = columns.data.find(c => c.name == name);
